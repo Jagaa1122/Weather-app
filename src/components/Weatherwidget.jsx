@@ -1,9 +1,15 @@
-
-export default function Weatherwidget() {
+import Search from "./Search";
+export default function Weatherwidget(ss) {
   return (
-    <div className="relative z-20 weatherwidget w-[212px] h-[414px]  rounded-[24px]">
-        end yum bn 
-
+    <div className="flex justify-between items-center flex-col w-[400px] h-[700px] relative z-10 overflow-hidden">
+      <div className="flex justify-around items-start flex-col w-[400px] h-[490px] backdrop-blur-lg absolute top-0 z-10 bg-[#ffffff]/40 rounded-t-[50px]">
+        <p>January 7, 2025</p>
+        <h1>{ss.selectedCity}</h1>
+        <div className="self-center">
+          <img className="w-[250px] h-[250px] " src="Sun.png" alt="" />
+        </div>
+      </div>
+      <div className="flex justify-center items-start flex-col w-[400px] h-[210px] absolute bottom-0 z-10 bg-[#ffffff]/40 rounded-b-[50px]"></div>
     </div>
   );
 }
