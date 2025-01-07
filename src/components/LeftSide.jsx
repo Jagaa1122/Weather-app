@@ -1,13 +1,13 @@
 import Weatherwidget from "../components/Weatherwidget";
 import Search from "./Search";
-import { useState } from "react";
-export default function LeftSide() {
+
+export default function LeftSide({selectedCity, setSelectedCity}) {
   return (
     <div className="relative dayWeather bg-[#f3f4f6] w-[50%] h-[100%] flex items-center justify-center">
-      <Search />
-      <Weatherwidget />
-      <div className="absolute left-[165px] top-[100px]">
-        <img src="sun.svg" alt="" className="w-[85px] h-[85px]" />
+      <Search selectedCity={selectedCity} setSelectedCity={setSelectedCity}/>
+      <Weatherwidget selectedCity={selectedCity} />
+      <div className="absolute left-[125px] top-[80px]">
+        <img src="sun.svg" alt="" className="w-[128px] h-[128px]" />
       </div>
     </div>
   );
