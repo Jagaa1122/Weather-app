@@ -5,6 +5,8 @@ export default function RightSide({
   setNightTemp,
   nightCondition,
   setNightCondition,
+  date,
+  setDate,
 }) {
   return (
     <div className="nightWeather relative bg-[#0f141e] w-[50%] h-[100%] flex items-center justify-center">
@@ -14,10 +16,10 @@ export default function RightSide({
         setNightTemp={setNightTemp}
         nightCondition={nightCondition}
         setNightCondition={setNightCondition}
+        date={date}
+        setDate={setDate}
       />
-      <div className="absolute right-[165px] bottom-[100px]">
-        <img src="moon.svg" alt="" className="w-[128px] h-[128px]" />
-      </div>
+     
     </div>
   );
 }

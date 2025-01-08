@@ -8,11 +8,12 @@ import styles from "@/app/styles.css";
 import Search from "@/components/Search";
 
 export default function Home() {
-  const [selectedCity, setSelectedCity] = useState("Ulaanbaatar");
+  const [selectedCity, setSelectedCity] = useState("Ulan Bator");
   const [dayTemp, setDayTemp] = useState("");
   const [dayCondition, setDayCondition] = useState("");
   const [nightTemp, setNightTemp] = useState("");
   const [nightCondition, setNightCondition] = useState("");
+  const [date, setDate] = useState("");
   return (
     <div className="flex w-[100vw] h-[100vh] relative overflow-hidden">
       <LeftSide
@@ -26,6 +27,8 @@ export default function Home() {
         setNightTemp={setNightTemp}
         nightCondition={nightCondition}
         setNightCondition={setNightCondition}
+        date={date}
+        setDate={setDate}
       />
       <RightSide
         selectedCity={selectedCity}
@@ -34,6 +37,8 @@ export default function Home() {
         setNightTemp={setNightTemp}
         nightCondition={nightCondition}
         setNightCondition={setNightCondition}
+        date={date}
+        setDate={setDate}
       />
       <Circles />
     </div>

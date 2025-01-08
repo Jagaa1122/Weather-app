@@ -11,6 +11,8 @@ export default function Search({
   setNightTemp,
   nightCondition,
   setNightCondition,
+  date,
+  setDate,
 }) {
   const [cities, setCities] = useState([]);
   const [searched, setSearched] = useState([]);
@@ -36,6 +38,7 @@ export default function Search({
     setDayCondition(data.current.condition.text);
     setNightTemp(data.forecast.forecastday[0].hour[0].temp_c);
     setNightCondition(data.forecast.forecastday[0].hour[0].condition.text);
+    setDate(data.current.last_updated);
   }
 
   useEffect(() => {

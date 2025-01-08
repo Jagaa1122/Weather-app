@@ -12,6 +12,8 @@ export default function LeftSide({
   setNightTemp,
   nightCondition,
   setNightCondition,
+  date,
+  setDate,
 }) {
   return (
     <div className="relative dayWeather bg-[#f3f4f6] w-[50%] h-[100%] flex items-center justify-center">
@@ -26,6 +28,8 @@ export default function LeftSide({
         setNightTemp={setNightTemp}
         nightCondition={nightCondition}
         setNightCondition={setNightCondition}
+        date={date}
+        setDate={setDate}
       />
       <Weatherwidget
         selectedCity={selectedCity}
@@ -37,10 +41,10 @@ export default function LeftSide({
         setNightTemp={setNightTemp}
         nightCondition={nightCondition}
         setNightCondition={setNightCondition}
+        date={date}
+        setDate={setDate}
       />
-      <div className="absolute left-[125px] top-[80px]">
-        <img src="sun.svg" alt="" className="w-[128px] h-[128px]" />
-      </div>
+    
     </div>
   );
 }
