@@ -3,15 +3,10 @@ import { useEffect, useState } from "react";
 export default function Search({
   selectedCity,
   setSelectedCity,
-  dayTemp,
   setDayTemp,
-  dayCondition,
   setDayCondition,
-  nightTemp,
   setNightTemp,
-  nightCondition,
   setNightCondition,
-  date,
   setDate,
 }) {
   const [cities, setCities] = useState([]);
@@ -28,9 +23,9 @@ export default function Search({
     setCities(incomeCities);
   }
 
-  async function getWeather() {
+  async function getWeather(city) {
     const result = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=ca0a05c2e6014802a0f21258250801&q=${selectedCity}`
+      `https://api.weatherapi.com/v1/forecast.json?key=ca0a05c2e6014802a0f21258250801&q=${city}`
     );
     const data = await result.json();
 
@@ -43,14 +38,17 @@ export default function Search({
 
   useEffect(() => {
     getData();
-    getWeather();
+    getWeather(selectedCity);
   }, []);
 
   const searchHandler = (e) => {
     const search = e.target.value;
     setInputValue(search);
     const filtered = cities.filter((city) => {
-      return city.includes(search);
+      if (!search) {
+        return false;
+      }
+      return city.toLowerCase().includes(search.toLowerCase());
     });
     setSearched(filtered);
   };
@@ -63,7 +61,7 @@ export default function Search({
           type="text"
           value={inputValue}
           placeholder="Search"
-          className="border-2 border-grey rounded-[12px] w-[400px] h-[40px] pl-[35px]"
+          className=" rounded-[12px] w-[400px] h-[40px] pl-[35px] outline-none"
           onChange={searchHandler}
         />
         <img
@@ -73,15 +71,15 @@ export default function Search({
         />
       </div>
       {searched.length > 0 &&
-        searched.slice(0, 10).map((city) => (
+        searched.slice(0, 10).map((city, index) => (
           <p
             className="cursor-pointer bg-white font-bold"
-            key={city}
+            key={index}
             onClick={() => {
               setSelectedCity(city);
               setInputValue("");
               setSearched([]);
-              getWeather();
+              getWeather(city);
             }}
           >
             {city}
