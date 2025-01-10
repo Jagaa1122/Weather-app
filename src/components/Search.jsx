@@ -16,9 +16,11 @@ export default function Search({
   async function getData() {
     const result = await fetch("https://countriesnow.space/api/v0.1/countries");
     const data = await result.json();
-    let incomeCities = data.data.map((country) => {
-      return country.cities;
-    });
+    let incomeCities = data.data.map((country) =>
+      country.cities.map((city) => {
+        return `${city}, ${country.country}`;
+      })
+    );
     incomeCities = incomeCities.flat();
     setCities(incomeCities);
   }
@@ -44,6 +46,7 @@ export default function Search({
   const searchHandler = (e) => {
     const search = e.target.value;
     setInputValue(search);
+
     const filtered = cities.filter((city) => {
       if (!search) {
         return false;
@@ -56,7 +59,6 @@ export default function Search({
   return (
     <div className="absolute top-[40px] z-30 ">
       <div className="relative ">
-        {" "}
         <input
           type="text"
           value={inputValue}
@@ -70,21 +72,24 @@ export default function Search({
           alt=""
         />
       </div>
-      {searched.length > 0 &&
-        searched.slice(0, 10).map((city, index) => (
-          <p
-            className="cursor-pointer bg-white font-bold"
-            key={index}
-            onClick={() => {
-              setSelectedCity(city);
-              setInputValue("");
-              setSearched([]);
-              getWeather(city);
-            }}
-          >
-            {city}
-          </p>
-        ))}
+      <div className="rounded-[30px] overflow-hidden absolute top-[50px]">
+        {searched.length > 0 &&
+          searched.slice(0, 10).map((city, index) => (
+            <p
+              className="cursor-pointer bg-white font-bold p-2 flex text-[25px]"
+              key={index}
+              onClick={() => {
+                setSelectedCity(city);
+                setInputValue("");
+                setSearched([]);
+                getWeather(city);
+              }}
+            >
+              <img src="localization_icon.svg" alt="" />
+              {city}
+            </p>
+          ))}
+      </div>
     </div>
   );
 }

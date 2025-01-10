@@ -55,7 +55,7 @@ export default function Weatherwidget({
         <p className="text-[#FF8E27] font-bold mb-1">{dayCondition}</p>
         <div className="flex justify-between w-[318px] h-[40px] p-1.5 absolute z-10 bottom-8">
           <img src="Rectangle 9.svg" alt="" />
-          <img src="localization_icon.svg" alt="" />
+          <img src="home.svg" alt="" />
           <img src="Heart.svg" alt="" />
           <img src="User.svg" alt="" />
         </div>

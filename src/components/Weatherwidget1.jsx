@@ -24,7 +24,7 @@ export default function Weatherwidget({
     }
   }
   return (
-    <div className="flex justify-between items-center flex-col w-[400px] h-[700px] relative z-10">
+    <div className="flex justify-between items-center flex-col w-[400px] h-[800px] relative z-10">
       <div className="absolute right-[-50px] bottom-[-20px]">
         <img src="moon.svg" alt="" className="w-[128px] h-[128px]" />
       </div>
@@ -46,11 +46,17 @@ export default function Weatherwidget({
           />
         </div>
       </div>
-      <div className="flex justify-center items-center flex-col w-[400px] h-[210px] absolute bottom-0 z-10 bg-[#111827]/40 rounded-b-[50px] backdrop-blur-md">
-        <p className="text-[#9CA3AF] text-[110px] font-bold bg-gradient-to-b from-black to-white text-transparent bg-clip-text">
+      <div className="flex justify-center items-center flex-col w-[400px] h-[310px] absolute bottom-0 z-10 bg-[#111827]/40 rounded-b-[50px] backdrop-blur-md">
+        <p className="text-[#9CA3AF] text-[110px] font-bold bg-gradient-to-b from-black to-white text-transparent bg-clip-text mt-[-88px]">
           {nightTemp}&deg;
         </p>
         <p className="text-[#777CCE] font-bold">{nightCondition}</p>
+        <div className="flex justify-between w-[318px] h-[40px] p-1.5 absolute z-10 bottom-8">
+          <img src="Rectangle 9.svg" alt="" />
+          <img src="localization_icon.svg" alt="" />
+          <img src="Heart.svg" alt="" />
+          <img src="User.svg" alt="" />
+        </div>
       </div>
     </div>
   );
