@@ -7,6 +7,8 @@ export default function RightSide({
   setNightCondition,
   date,
   setDate,
+  loading,
+  setLoading
 }) {
   return (
     <div className="nightWeather relative bg-[#0f141e] w-[50%] h-[100%] flex items-center justify-center">
@@ -18,6 +20,8 @@ export default function RightSide({
         setNightCondition={setNightCondition}
         date={date}
         setDate={setDate}
+        loading={loading}
+        setLoading={setLoading}
       />
      
     </div>

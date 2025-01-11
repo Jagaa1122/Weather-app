@@ -8,10 +8,13 @@ export default function Search({
   setNightTemp,
   setNightCondition,
   setDate,
+  setLoading
 }) {
   const [cities, setCities] = useState([]);
   const [searched, setSearched] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  
+ 
 
   async function getData() {
     const result = await fetch("https://countriesnow.space/api/v0.1/countries");
@@ -26,6 +29,7 @@ export default function Search({
   }
 
   async function getWeather(city) {
+    setLoading(true);
     const result = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=ca0a05c2e6014802a0f21258250801&q=${city}`
     );
@@ -36,6 +40,7 @@ export default function Search({
     setNightTemp(data.forecast.forecastday[0].hour[0].temp_c);
     setNightCondition(data.forecast.forecastday[0].hour[0].condition.text);
     setDate(data.current.last_updated);
+    setLoading(false);
   }
 
   useEffect(() => {

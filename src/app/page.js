@@ -14,6 +14,8 @@ export default function Home() {
   const [nightTemp, setNightTemp] = useState("");
   const [nightCondition, setNightCondition] = useState("");
   const [date, setDate] = useState("");
+  const [loading,setLoading] = useState(false);
+ 
   return (
     <div className="flex w-[100vw] h-[100vh] relative overflow-hidden">
       <LeftSide
@@ -29,6 +31,8 @@ export default function Home() {
         setNightCondition={setNightCondition}
         date={date}
         setDate={setDate}
+        loading={loading}
+        setLoading={setLoading}
       />
       <RightSide
         selectedCity={selectedCity}
@@ -39,6 +43,8 @@ export default function Home() {
         setNightCondition={setNightCondition}
         date={date}
         setDate={setDate}
+        loading={loading}
+        setLoading={setLoading}
       />
       <Circles />
     </div>
